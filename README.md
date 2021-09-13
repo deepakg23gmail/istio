@@ -1,5 +1,9 @@
 # istio
-Learn Istio service mesh by simple examples
+Learn Istio service mesh by simple examples.
+It covers traffic shifting mechanisms like - Weighted routing, canary, dark launch via mirroring, http headers etc.
+It also covers traffic visualisation via Kiali. 
+
+In future it will also cover Security and Envoy Filter customization etc, 
 
 ## Step 1
 Create a kubernetes cluster on your favourite cloud platform
