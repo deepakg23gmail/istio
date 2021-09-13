@@ -16,8 +16,10 @@ Clone this repo
 
 ## Step 4
 Apply the configuration using 
+Please note, you need to first apply all files except those ending with -vs.
+Once you have those applied then try applying -vs files one at a time to see the effect.
 ```
-kubectl apply -f .
+kubectl apply -f <name of yaml file>
 ```
 ## Step 5
 Use browser or Postman client to send traffic and recieve response
