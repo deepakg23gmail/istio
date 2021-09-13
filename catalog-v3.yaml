@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catalog-v3
+  labels:
+    app: catalog
+    version: v3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: catalog
+      version: v3
+  template:
+    metadata:
+      labels:
+        app: catalog
+        version: v3
+    spec:
+      containers:
+        - image: deepakg23/catalog:v3
+          imagePullPolicy: Always
+          name: svc3
+          ports:
+            - containerPort: 8080
