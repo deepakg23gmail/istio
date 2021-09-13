@@ -35,3 +35,4 @@ kubectl expose service kiali --type=LoadBalancer --name=kiali-svc --namespace is
 export KIALI_URL=$(kubectl get svc istio-ingressgateway -n istio-system  -o jsonpath="{.status.loadBalancer.ingress[0]['hostname','ip']}"):$(kubectl get svc kiali-svc -n istio-system -o 'jsonpath={.spec.ports[0].nodePort}')
 echo http://${KIALI_URL}
 ```
+<img width="2142" alt="Screenshot 2021-09-13 at 7 38 23 PM" src="https://user-images.githubusercontent.com/17019260/133098776-cfc95ee3-e1fd-4fca-b90f-925e5dd7df71.png">
