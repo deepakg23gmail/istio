@@ -1,0 +1,30 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata: 
+  name: header-filter
+  namespace: default
+spec:
+  workloadSelector:
+    labels: 
+      app: catalog
+  configPatches: 
+  - applyTo: HTTP_FILTER
+    match:
+      context: SIDECAR_INBOUND
+      listener:
+        portNumber: 8080
+        filterChain:
+          filter:
+            name: "envoy.filters.network.http_connection_manager"
+            subFilter:
+              name: envoy.filters.http.router
+    patch:
+      operation: INSERT_BEFORE
+      value:
+        name: envoy.filters.http.lua
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.filters.http.lua.v3.Lua
+          inlineCode: | 
+            function envoy_on_response(response_handle)
+              response_handle:headers(): add("filter-text" , "message added by filter")
+            end
